@@ -2,14 +2,13 @@ require 'formula'
 
 class Alpine <Formula
   url 'ftp://ftp.cac.washington.edu/alpine/alpine-2.00.tar.gz'
-  version '2.00'
   homepage 'http://www.washington.edu/alpine/'
   md5 '0f4757167baf5c73aa44f2ffa4860093'
 
   def install
     system "./configure", "--prefix=#{prefix}", "--disable-debug", "--with-ssl-include-dir=/usr/include/openssl"
-    # disable parallel building
-    system "make -j1 install"
+    ENV.j1
+    system "make install"
   end
 
   def patches
