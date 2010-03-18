@@ -8,8 +8,7 @@ class Rename <Formula
   def install
     system "./configure", "--prefix=#{prefix}", "--disable-debug", "--disable-dependency-tracking"
     system "make"
-		system "install -d #{prefix}/bin"
-		system "install -s ./rename #{prefix}/bin/"
-		system "install -m 0644 rename.1 /usr/local/share/man/man1/"
+		bin.install "rename"
+		man1.install "rename.1"
   end
 end
